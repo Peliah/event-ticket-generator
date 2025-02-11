@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'Jeju Myeongjo';
+  src: url('/public/font/JejuMyeongjo.ttf') format('ttf');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,5 +26,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif, 'Jeju Myeongjo';
 }
