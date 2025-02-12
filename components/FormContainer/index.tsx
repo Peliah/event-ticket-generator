@@ -1,14 +1,12 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+const MultiStepFormContainer: React.FC = () => {
+    const [step, setStep] = useState<number>(1)
 
-const MultiStepFormContainer = () => {
-    const [step, setStep] = useState(1);
-
-    // Step details
     const steps = [
         { name: 'Ticket Selection', number: 1 },
         { name: 'Attendee Details', number: 2 },
@@ -44,15 +42,9 @@ const MultiStepFormContainer = () => {
             </div>
 
             <div>
-                {step === 1 && (
-                    <Step1 nextStep={nextStep} />
-                )}
-                {step === 2 && (
-                    <Step2 nextStep={nextStep} prevStep={prevStep} />
-                )}
-                {step === 3 && (
-                    <Step3 prevStep={prevStep} />
-                )}
+                {step === 1 && <Step1 nextStep={nextStep} />}
+                {step === 2 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
+                {step === 3 && <Step3 prevStep={prevStep} />}
             </div>
         </div>
     );

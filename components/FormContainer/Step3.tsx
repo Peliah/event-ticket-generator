@@ -1,6 +1,6 @@
-import React from 'react';
+import { StepProps } from '@/utils/types';
 
-const Step3 = ({ prevStep }) => {
+const Step3: React.FC<StepProps> = ({ prevStep }) => {
     return (
         <div>
             <p>This is Step 3: Confirmation</p>
