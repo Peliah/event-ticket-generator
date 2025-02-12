@@ -1,11 +1,48 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import { FormData } from '@/utils/types';
 const MultiStepFormContainer: React.FC = () => {
     const [step, setStep] = useState<number>(1)
+    const [formData, setFormData] = useState<FormData>({
+        ticketType: '',
+        ticketQuantity: 1,
+        fullName: '',
+        email: '',
+        avatar: '',
+        specialRequest: '',
+    });
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const validateStep1 = () => {
+        const newErrors: Record<string, string> = {};
+        if (!formData.ticketType) {
+            newErrors.ticketType = 'Please select a ticket type.';
+        }
+        if (formData.ticketQuantity < 1) {
+            newErrors.ticketQuantity = 'Please select at least one ticket.';
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const validateStep2 = () => {
+        const newErrors: Record<string, string> = {};
+        if (!formData.fullName) {
+            newErrors.fullName = 'Please enter your full name.';
+        }
+        if (!formData.email) {
+            newErrors.email = 'Please enter your email address.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address.';
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
 
     const steps = [
         { name: 'Ticket Selection', number: 1 },
@@ -16,12 +53,32 @@ const MultiStepFormContainer: React.FC = () => {
     const progressBarColors = ['bg-[#24A0B5]', 'bg-[#24A0B5]', 'bg-[#24A0B5]'];
 
     const nextStep = () => {
+        if (step === 1 && !validateStep1()) return;
+        if (step === 2 && !validateStep2()) return;
         if (step < steps.length) setStep(step + 1);
     };
 
     const prevStep = () => {
         if (step > 1) setStep(step - 1);
     };
+
+    const handleSubmit = () => {
+        if (validateStep2()) {
+            alert('Ticket Confirmed!');
+            localStorage.removeItem('formData'); // Clear persistent storage
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }, [formData]);
+
+    useEffect(() => {
+        const savedData = localStorage.getItem('formData');
+        if (savedData) {
+            setFormData(JSON.parse(savedData));
+        }
+    }, []);
 
     return (
         <div className='w-full'>
@@ -42,9 +99,30 @@ const MultiStepFormContainer: React.FC = () => {
             </div>
 
             <div>
-                {step === 1 && <Step1 nextStep={nextStep} />}
-                {step === 2 && <Step2 nextStep={nextStep} prevStep={prevStep} />}
-                {step === 3 && <Step3 prevStep={prevStep} />}
+                {step === 1 && (
+                    <Step1
+                        nextStep={nextStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                        errors={errors}
+                    />
+                )}
+                {step === 2 && (
+                    <Step2
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                        errors={errors}
+                    />
+                )}
+                {step === 3 && (
+                    <Step3
+                        prevStep={prevStep}
+                        formData={formData}
+                        handleSubmit={handleSubmit}
+                    />
+                )}
             </div>
         </div>
     );

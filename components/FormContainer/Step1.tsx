@@ -2,14 +2,14 @@ import { StepProps } from '@/utils/types';
 import { IoIosArrowDown } from 'react-icons/io';
 
 
-const Step1: React.FC<StepProps> = ({ nextStep }) => {
+const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors }) => {
     const ticketType = [
         { price: 'Free', access: 'regular access', date: '20/25' },
         { price: '$150', access: 'vip access', date: '20/25' },
         { price: '$150', access: 'vvip access', date: '20/25' },
     ]
     return (
-        <div className='p-6 rounded-3xl border border-[#0E464F] '>
+        <div className='p-6 rounded-3xl border border-[#0E464F] bg-[#08252B]'>
             <div className='flex flex-col gap-6'>
                 <div className='text-center border-x border-b border-[#0E464F] rounded-3xl h-[200px] bg-transparent flex items-center'
                     style={{ backgroundImage: `linear-gradient(170deg, #24A0B5 0%, #0E464F 0%, transparent 100% )` }}
@@ -50,7 +50,7 @@ const Step1: React.FC<StepProps> = ({ nextStep }) => {
                             ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2">
-                            <IoIosArrowDown/>
+                            <IoIosArrowDown />
                         </div>
                     </div>
                 </div>
