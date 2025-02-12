@@ -18,7 +18,7 @@ const Navbar = () => {
                     />
                 </div>
                 <div>
-                    <ul className='flex gap-6 text-lg'>
+                    <ul className='flex gap-6 text-lg text-[#B3B3B3]'>
                         <li>Events</li>
                         <li>My Tickets</li>
                         <li>About Project</li>

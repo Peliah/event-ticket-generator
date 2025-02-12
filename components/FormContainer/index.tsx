@@ -27,7 +27,7 @@ const MultiStepFormContainer: React.FC = () => {
         <div className='w-full'>
             <div className="flex justify-between items-start mb-2 text-white">
                 <h1 className="text-3xl font-thin" style={{ fontFamily: 'Jeju Myeongjo, serif' }}>{steps[step - 1].name}</h1>
-                <p className="text-gray-600 font-[family-name:var(--font-roboto)]">Step {steps[step - 1].number}/3</p>
+                <p className="text-zinc-50 font-[family-name:var(--font-roboto)]">Step {steps[step - 1].number}/3</p>
             </div>
 
             <div className="bg-[#0E464F] rounded-md w-full h-1 flex mb-6">
