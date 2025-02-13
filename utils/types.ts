@@ -10,6 +10,7 @@ export type FormData = {
 export type StepProps = {
   nextStep?: () => void;
   prevStep?: () => void;
+  errors: Record<string, string>;
   formData: FormData;
   setFormData: (data: FormData) => void;
 };
