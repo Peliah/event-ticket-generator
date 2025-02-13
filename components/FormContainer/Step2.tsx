@@ -153,7 +153,7 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
                     />
                 </div>
 
-                <div className='flex gap-8 w-full text-base font-light' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
+                <div className='flex gap-6 w-full text-base font-light' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
                     <button
                         className='rounded-lg px-6 py-3 w-1/2 text-center border border-[#24A0B5] text-[#24A0B5]'
                         onClick={prevStep}
