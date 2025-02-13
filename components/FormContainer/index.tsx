@@ -6,7 +6,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import { FormData } from '@/utils/types';
 const MultiStepFormContainer: React.FC = () => {
-    const [step, setStep] = useState<number>(1)
+    const [step, setStep] = useState<number>(1);
     const [formData, setFormData] = useState<FormData>({
         ticketType: '',
         ticketQuantity: 1,
@@ -65,20 +65,30 @@ const MultiStepFormContainer: React.FC = () => {
     const handleSubmit = () => {
         if (validateStep2()) {
             alert('Ticket Confirmed!');
-            localStorage.removeItem('formData'); // Clear persistent storage
+            localStorage.removeItem('formData');
+            localStorage.removeItem('currentStep');
         }
     };
+
+    useEffect(() => {
+        const savedStep = localStorage.getItem('currentStep');
+        if (savedStep) {
+            setStep(parseInt(savedStep, 10));
+        }
+
+        const savedData = localStorage.getItem('formData');
+        if (savedData) {
+            setFormData(JSON.parse(savedData));
+        }
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('formData', JSON.stringify(formData));
     }, [formData]);
 
     useEffect(() => {
-        const savedData = localStorage.getItem('formData');
-        if (savedData) {
-            setFormData(JSON.parse(savedData));
-        }
-    }, []);
+        localStorage.setItem('currentStep', step.toString());
+    }, [step]);
 
     return (
         <div className='w-full'>
