@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { useCallback, useRef } from 'react';
 import { StepProps } from '@/utils/types';
 import Image from 'next/image';
@@ -6,7 +8,7 @@ import { toPng } from 'html-to-image';
 import { useBarcode } from 'next-barcode';
 
 
-const Step3: React.FC<StepProps> = ({ cancel, formData}) => {
+const Step3: React.FC<StepProps> = ({ cancel, formData }) => {
 
     const ref = useRef<HTMLDivElement>(null)
 
@@ -18,7 +20,7 @@ const Step3: React.FC<StepProps> = ({ cancel, formData}) => {
 
         await document.fonts.ready;
 
-        toPng(ref.current, { cacheBust: false,})
+        toPng(ref.current, { cacheBust: false, })
             .then((dataUrl) => {
                 const link = document.createElement('a')
                 link.download = 'my-image-name.png'
