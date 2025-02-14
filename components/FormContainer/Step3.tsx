@@ -45,7 +45,7 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData }) => {
                 <p className='text-neutral-50 text-base font-normal font-[family-name:var(--font-roboto)] leading-normal'>Check your email for a copy or you can <span>download</span></p>
             </div>
 
-            <div className='py-8 px-5' ref={ref}>
+            <div className='py-8 px-5 bg-[#041E23]' ref={ref}>
                 <div className='flex items-center justify-center'>
                     <div className="ticket border border-[#24A0B5] bg-[#072C31]">
                         <div className="ticket--start">
