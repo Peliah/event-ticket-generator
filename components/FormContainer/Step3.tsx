@@ -1,11 +1,29 @@
+import { useCallback, useRef } from 'react';
 import { StepProps } from '@/utils/types';
 import Image from 'next/image';
 
+import { toPng } from 'html-to-image';
 const Step3: React.FC<StepProps> = ({ prevStep, formData }) => {
 
-    const handleDownloadTicket = () => {
-        alert('Download functionality will be implemented here.');
-    };
+    const ref = useRef<HTMLDivElement>(null)
+
+    const handleDownloadTicket = useCallback(() => {
+
+        if (ref.current === null) {
+            return
+        }
+
+        toPng(ref.current, { cacheBust: true, })
+            .then((dataUrl) => {
+                const link = document.createElement('a')
+                link.download = 'my-image-name.png'
+                link.href = dataUrl
+                link.click()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [ref]);
 
     return (
         <div className='text-center gap-8'>
@@ -14,7 +32,7 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData }) => {
                 <p className='text-neutral-50 text-base font-normal font-[family-name:var(--font-roboto)] leading-normal'>Check your email for a copy or you can <span>download</span></p>
             </div>
 
-            <div className='py-8 px-5'>
+            <div className='py-8 px-5' ref={ref}>
                 <div className='flex items-center justify-center'>
                     <div className="ticket border border-[#24A0B5] ">
                         <div className="ticket--start">
