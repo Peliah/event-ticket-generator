@@ -52,7 +52,7 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors })
                             </div>
                         ))}
                     </div>
-                    {errors.ticketType && <p className="text-red-500 text-sm">{errors.ticketType}</p>}
+                    {errors?.ticketType && <p className="text-red-500 text-sm">{errors.ticketType}</p>}
                 </div>
 
                 <div className='flex flex-col gap-2 font-[family-name:var(--font-roboto)]'>
@@ -74,7 +74,7 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors })
                             <IoIosArrowDown />
                         </div>
                     </div>
-                    {errors.ticketQuantity && <p className="text-red-500 text-sm">{errors.ticketQuantity}</p>}
+                    {errors?.ticketQuantity && <p className="text-red-500 text-sm">{errors.ticketQuantity}</p>}
                 </div>
 
                 <div className='flex gap-6 w-full text-base font-light' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>

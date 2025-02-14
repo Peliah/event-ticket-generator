@@ -173,12 +173,11 @@
 // export default Step2;
 
 
-
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { StepProps } from "@/utils/types";
+import { StepProps, FormData as FormDataType } from "@/utils/types";
 import { BiCloudDownload, BiEnvelope } from "react-icons/bi";
 
 const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData, errors }) => {
@@ -195,14 +194,14 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
     }, [formData.avatar]);
 
     const uploadToCloudinary = useCallback(async (file: File) => {
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", UPLOAD_PRESET!);
+        const cformData = new FormData();
+        cformData.append("file", file);
+        cformData.append("upload_preset", UPLOAD_PRESET!);
 
         try {
             const response = await fetch(CLOUDINARY_URL, {
                 method: "POST",
-                body: formData,
+                body: cformData,
             });
 
             if (!response.ok) throw new Error("Upload failed");
@@ -211,12 +210,13 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
             const imageUrl = data.secure_url as string;
 
             setImage(imageUrl);
-            setFormData((prev) => ({ ...prev, avatar: imageUrl }));
+            setFormData((prev: FormDataType) => ({ ...prev, avatar: imageUrl }));
             localStorage.setItem("avatar", imageUrl);
         } catch (error) {
             console.error("Cloudinary upload error:", error);
+            alert("Failed to upload image. Please try again.");
         }
-    }, [setFormData]);
+    }, [setFormData, UPLOAD_PRESET, CLOUDINARY_URL]);
 
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -237,7 +237,7 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFormData((prev: FormDataType) => ({ ...prev, [name]: value }));
     };
 
     return (
@@ -303,7 +303,7 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
                         onChange={handleInputChange}
                         className="w-full bg-transparent p-3 rounded-xl border border-[#07373F]"
                     />
-                    {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+                    {errors?.fullName && <p className="text-red-500 text-sm">{errors?.fullName}</p>}
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -322,7 +322,7 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
                             <BiEnvelope className="text-2xl" />
                         </div>
                     </div>
-                    {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                    {errors?.email && <p className="text-red-500 text-sm">{errors?.email}</p>}
                 </div>
 
                 <div className="flex flex-col gap-2">

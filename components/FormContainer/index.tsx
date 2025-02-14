@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -129,9 +129,10 @@ const MultiStepFormContainer: React.FC = () => {
                 {step === 3 && (
                     <Step3
                         prevStep={prevStep}
-                        formData={formData}
-                        handleSubmit={handleSubmit}
-                    />
+                        formData={formData} 
+                        setFormData={function (value: SetStateAction<FormData>): void {
+                            throw new Error('Function not implemented.');
+                        } }/>
                 )}
             </div>
         </div>
