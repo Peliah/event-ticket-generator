@@ -45,11 +45,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roadRage.variable} ${roboto.variable} ${alatsi.variable} antialiased bg-[#02191D]  pb-10`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roadRage.variable} ${roboto.variable} ${alatsi.variable} antialiased bg-[#02191D] `}
       >
-        <div className="max-w-[1440px] mx-auto min-h-screen">
+        <div className="max-w-[1440px] mx-auto min-h-screen relative">
           <Navbar />
-          <div className="w-full h-full flex mt-14">
+          <div className="w-full h-full flex  pt-14 pb-28 px-5">
             {children}
           </div>
         </div>
