@@ -25,8 +25,24 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  /* background: var(--background); */
   font-family: Arial, Helvetica, sans-serif, 'Jeju Myeongjo';
+
+  background-image:
+  radial-gradient(circle 80vh at 50% 100%, rgba(0, 191, 251, 0.2), rgba(0, 191, 251, 0));
+  background-size: 100% 50%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+    
+}
+
+.page-gradient {
+  background-image:
+    radial-gradient(circle 200px at 50% 100%, rgba(0, 191, 251, 0.2), rgba(0, 191, 251, 0));
+    background-size: 100% 50%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+
 }
 
 .ticket {
@@ -34,6 +50,13 @@ body {
   position: relative;
   width: 350px;
   flex-direction: column;
+  background-color: transparent;
+  background-image:
+    radial-gradient(circle 150px at 50% 0%, rgba(0, 191, 251, 0.2), rgba(0, 191, 251, 0)),
+    radial-gradient(circle 200px at 50% 100%, rgba(0, 191, 251, 0.2), rgba(0, 191, 251, 0));
+  background-size: 100% 50%;
+  background-position: top, bottom;
+  background-repeat: no-repeat;
 }
 
 .ticket--start {

@@ -62,13 +62,17 @@ const MultiStepFormContainer: React.FC = () => {
         if (step > 1) setStep(step - 1);
     };
 
-    const handleSubmit = () => {
-        if (validateStep2()) {
-            alert('Ticket Confirmed!');
-            localStorage.removeItem('formData');
-            localStorage.removeItem('currentStep');
-        }
-    };
+    const cancel = ()=> {
+        setFormData({
+            ticketType: '',
+            ticketQuantity: 1,
+            fullName: '',
+            email: '',
+            avatar: '',
+            specialRequest: ''
+        });
+        setStep(1)
+    }
 
     useEffect(() => {
         const savedStep = localStorage.getItem('currentStep');
@@ -92,7 +96,7 @@ const MultiStepFormContainer: React.FC = () => {
 
     return (
         <div className='w-full'>
-            <div className="flex justify-between items-start mb-2 text-white">
+            <div className="flex justify-between items-start mb-2 text-white flex-col md:flex-row">
                 <h1 className="text-3xl font-thin" style={{ fontFamily: 'Jeju Myeongjo, serif' }}>{steps[step - 1].name}</h1>
                 <p className="text-zinc-50 font-[family-name:var(--font-roboto)]">Step {steps[step - 1].number}/3</p>
             </div>
@@ -112,6 +116,7 @@ const MultiStepFormContainer: React.FC = () => {
                 {step === 1 && (
                     <Step1
                         nextStep={nextStep}
+                        cancel ={cancel}
                         formData={formData}
                         setFormData={setFormData}
                         errors={errors}
@@ -128,7 +133,7 @@ const MultiStepFormContainer: React.FC = () => {
                 )}
                 {step === 3 && (
                     <Step3
-                        prevStep={prevStep}
+                        cancel={cancel}
                         formData={formData} 
                         setFormData={function (value: SetStateAction<FormData>): void {
                             throw new Error('Function not implemented.');

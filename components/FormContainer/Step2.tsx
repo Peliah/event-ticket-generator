@@ -70,7 +70,7 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
             <div className="flex flex-col gap-6">
                 <div className="border border-[#07373F] rounded-3xl px-6 pt-6 pb-12 bg-[#052228]">
                     <h1 className="mb-8">Upload Profile Photo</h1>
-                    <div className="h-[200px] flex justify-center items-center bg-opacity-20">
+                    <div className="h-[200px] flex justify-center items-center bg-black bg-opacity-20">
                         <div
                             className={`h-[240px] w-[240px] rounded-[32px] bg-[#0E464F] border-4 flex justify-center items-center relative transition-all overflow-hidden ${dragActive ? "border-[#24A0B5]" : "border-[rgba(36,160,181,0.5)]"
                                 }`}
@@ -161,11 +161,11 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
                     />
                 </div>
 
-                <div className="flex gap-6 w-full">
-                    <button className="rounded-lg px-6 py-3 w-1/2 border border-[#24A0B5] text-[#24A0B5]" onClick={prevStep} style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
+                <div className="flex gap-6 w-full flex-col md:flex-row">
+                    <button className="rounded-lg px-6 py-3 w-full border border-[#24A0B5] text-[#24A0B5]" onClick={prevStep} style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
                         Back
                     </button>
-                    <button className="rounded-lg px-6 py-3 w-1/2 bg-[#24A0B5] text-white" onClick={nextStep} style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
+                    <button className="rounded-lg px-6 py-3 w-full bg-[#24A0B5] text-white" onClick={nextStep} style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
                         Get My Free Ticket
                     </button>
                 </div>

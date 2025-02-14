@@ -6,7 +6,7 @@ import { toPng } from 'html-to-image';
 import { useBarcode } from 'next-barcode';
 
 
-const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
+const Step3: React.FC<StepProps> = ({ cancel, formData}) => {
 
     const ref = useRef<HTMLDivElement>(null)
 
@@ -68,7 +68,7 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
                                         </div>
                                     </div>
 
-                                    <div className='border-4 rounded-xl w-[140px] h-[140px] border-[rgba(36, 160, 181, 0.5)]'>
+                                    <div className='border-4 rounded-xl w-[140px] h-[140px] border-[rgba(36, 160, 181, 0.5)] overflow-hidden'>
                                         <Image
                                             src={formData.avatar}
                                             alt="avatar"
@@ -79,8 +79,8 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
                                         />
                                     </div>
 
-                                    <div className='w-full rounded-lg border border-[#133D44] bg-[#08343C] p-1 text-left'>
-                                        <div className='flex gap-2 border-b border-[#12464E] font-[family-name:var(--font-roboto)] text-white w-full'>
+                                    <div className='w-full rounded-lg border border-[#133D44] bg-[#08343C] p-1 text-left '>
+                                        <div className='flex gap-2 border-b border-[#12464E] font-[family-name:var(--font-roboto)] text-white w-full  overflow-clip'>
                                             <div className='border-r p-1 flex flex-col gap-1 border-[#12464E] w-1/2'>
                                                 <p className='opacity-[33%] font-normal leading-[15px] text-[10px]'>Enter your name</p>
                                                 <p className='font-bold text-xs leading-[18px]'>{formData.fullName}</p>
@@ -124,15 +124,15 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
                 </div>
             </div>
 
-            <div className='flex gap-6 w-full text-base font-light pt-6' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
+            <div className='flex gap-6 w-full text-base font-light pt-6 flex-col md:flex-row' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
                 <button
-                    className='rounded-lg px-6 py-3 w-1/2 text-center border border-[#24A0B5] text-[#24A0B5]'
-                    onClick={prevStep}
+                    className='rounded-lg px-6 py-3 w-full text-center border border-[#24A0B5] text-[#24A0B5]'
+                    onClick={cancel}
                 >
                     Book Another Ticket
                 </button>
                 <button
-                    className='rounded-lg px-6 py-3 w-1/2 text-center bg-[#24A0B5] text-white'
+                    className='rounded-lg px-6 py-3 w-full text-center bg-[#24A0B5] text-white'
                     onClick={handleDownloadTicket}
                 >
                     Download Ticket

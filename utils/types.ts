@@ -10,6 +10,7 @@ export type FormData = {
 export type StepProps = {
   nextStep?: () => void;
   prevStep?: () => void;
+  cancel?: ()=> void;
   errors?: Record<string, string>;
   formData: FormData;
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;

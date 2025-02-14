@@ -1,7 +1,7 @@
 import { StepProps } from '@/utils/types';
 import { IoIosArrowDown } from 'react-icons/io';
 
-const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors }) => {
+const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors, cancel }) => {
     const ticketType = [
         { id: '1', price: 'Free', access: 'regular access', date: '20/25' },
         { id: '2', price: '$150', access: 'vip access', date: '20/25' },
@@ -38,11 +38,11 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors })
 
                 <div className='flex flex-col gap-2 font-[family-name:var(--font-roboto)]'>
                     <h1>Select Ticket Type:</h1>
-                    <div className='w-full flex p-4 bg-[#052228] border border-[#07373F] gap-4 rounded-3xl'>
+                    <div className='w-full flex p-4 bg-[#052228] border border-[#07373F] gap-4 rounded-3xl flex-col md:flex-row'>
                         {ticketType.map((ticket, index) => (
                             <div
                                 key={index}
-                                className={`w-1/3 p-3 rounded-xl hover:bg-[#2C545B] border border-[#197686] ${formData.ticketType === ticket.id ? 'bg-[#12464E]' : ''
+                                className={`w-full p-3 rounded-xl hover:bg-[#2C545B] border border-[#197686] ${formData.ticketType === ticket.id ? 'bg-[#12464E]' : ''
                                     }`}
                                 onClick={() => handleTicketTypeChange(ticket.id)}
                             >
@@ -77,11 +77,11 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors })
                     {errors?.ticketQuantity && <p className="text-red-500 text-sm">{errors.ticketQuantity}</p>}
                 </div>
 
-                <div className='flex gap-6 w-full text-base font-light' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
-                    <button className='rounded-lg px-6 py-3 w-1/2 text-center border border-[#24A0B5] text-[#24A0B5]'>
+                <div className='flex gap-6 w-full text-base font-light flex-col md:flex-row' style={{ fontFamily: 'Jeju Myeongjo, serif' }}>
+                    <button className='rounded-lg px-6 py-3 w-full text-center border border-[#24A0B5] text-[#24A0B5]' onClick={cancel}>
                         Cancel
                     </button>
-                    <button className='rounded-lg px-6 py-3 w-1/2 text-center bg-[#24A0B5] text-white' onClick={nextStep}>
+                    <button className='rounded-lg px-6 py-3 w-full text-center bg-[#24A0B5] text-white' onClick={nextStep}>
                         Next
                     </button>
                 </div>

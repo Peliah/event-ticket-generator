@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roadRage.variable} ${roboto.variable} ${alatsi.variable} antialiased bg-[#02191D] `}
+        className={`${geistSans.variable} ${geistMono.variable} ${roadRage.variable} ${roboto.variable} ${alatsi.variable} antialiased bg-[#02191D]  pb-10`}
       >
         <div className="max-w-[1440px] mx-auto min-h-screen">
           <Navbar />
