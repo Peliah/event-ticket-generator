@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -62,7 +62,7 @@ const MultiStepFormContainer: React.FC = () => {
         if (step > 1) setStep(step - 1);
     };
 
-    const cancel = ()=> {
+    const cancel = () => {
         setFormData({
             ticketType: '',
             ticketQuantity: 1,
@@ -116,7 +116,7 @@ const MultiStepFormContainer: React.FC = () => {
                 {step === 1 && (
                     <Step1
                         nextStep={nextStep}
-                        cancel ={cancel}
+                        cancel={cancel}
                         formData={formData}
                         setFormData={setFormData}
                         errors={errors}
@@ -134,10 +134,10 @@ const MultiStepFormContainer: React.FC = () => {
                 {step === 3 && (
                     <Step3
                         cancel={cancel}
-                        formData={formData} 
-                        setFormData={function (value: SetStateAction<FormData>): void {
+                        formData={formData}
+                        setFormData={function (): void {
                             throw new Error('Function not implemented.');
-                        } }/>
+                        }} />
                 )}
             </div>
         </div>
