@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Jeju Myeongjo';
-  src: url('/public/font/JejuMyeongjo.ttf') format('ttf');
+  src: url('/font/JejuMyeongjo.woff2') format('woff2');
   /* font-weight: 100; */
   font-style: normal;
 }

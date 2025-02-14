@@ -18,7 +18,7 @@ const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
 
         await document.fonts.ready;
 
-        toPng(ref.current, { cacheBust: true,})
+        toPng(ref.current, { cacheBust: false,})
             .then((dataUrl) => {
                 const link = document.createElement('a')
                 link.download = 'my-image-name.png'
