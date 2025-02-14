@@ -33,8 +33,8 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href='/my-tickets'>
-                                    <h1 className={pathname === '/my-tickets' ? 'text-white' : ''}>My Tickets</h1>
+                                <Link href='/tickets'>
+                                    <h1 className={pathname === '/tickets' ? 'text-white' : ''}>My Tickets</h1>
                                 </Link>
                             </li>
                             <li>

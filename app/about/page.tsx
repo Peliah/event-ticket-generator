@@ -123,12 +123,24 @@ const About = () => {
                     💛 Enjoy
                 </h1>
                 <div className="rounded-2xl border px-12 py-4 bg-[#041E23] border-[#0E464F] flex gap-8 items-center justify-center w-fit h-fit">
-                    <Link className="w-[215px] px-6 py-3 rounded-lg border border-[#23a0b5] justify-center items-center gap-2 inline-flex overflow-hidden text-[#23a0b5] text-base font-normal font-[family-name:var(--font-roboto)] leading-normal" href={'/'}>
+                    <Link
+                        className="w-[215px] px-6 py-3 rounded-lg border border-[#23a0b5] justify-center items-center gap-2 inline-flex overflow-hidden text-[#23a0b5] text-base font-normal font-[family-name:var(--font-roboto)] leading-normal"
+                        href={'https://www.figma.com/community/file/1470800949188681164/event-ticket-booking-ui-open-source-practice-project'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Design File
                     </Link>
-                    <Link className="w-[215px] px-6 py-3 rounded-lg border border-[#23a0b5] justify-center items-center gap-2 inline-flex overflow-hidden text-[#fff] bg-[#23a0b5] text-base font-normal font-[family-name:var(--font-roboto)] leading-normal" href={'/'}>
+
+                    <Link
+                        className="w-[215px] px-6 py-3 rounded-lg border border-[#23a0b5] justify-center items-center gap-2 inline-flex overflow-hidden text-[#fff] bg-[#23a0b5] text-base font-normal font-[family-name:var(--font-roboto)] leading-normal"
+                        href={'https://github.com/Peliah/event-ticket-generator'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Github code
                     </Link>
+
                 </div>
             </section>
         </div>
