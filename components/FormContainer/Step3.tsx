@@ -6,17 +6,19 @@ import { toPng } from 'html-to-image';
 import { useBarcode } from 'next-barcode';
 
 
-const Step3: React.FC<StepProps> = ({ prevStep, formData }) => {
+const Step3: React.FC<StepProps> = ({ prevStep, formData}) => {
 
     const ref = useRef<HTMLDivElement>(null)
 
-    const handleDownloadTicket = useCallback(() => {
+    const handleDownloadTicket = useCallback(async () => {
 
         if (ref.current === null) {
             return
         }
 
-        toPng(ref.current, { cacheBust: true, })
+        await document.fonts.ready;
+
+        toPng(ref.current, { cacheBust: true, skipFonts: true })
             .then((dataUrl) => {
                 const link = document.createElement('a')
                 link.download = 'my-image-name.png'
