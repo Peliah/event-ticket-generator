@@ -23,10 +23,10 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors, c
                     style={{ backgroundImage: `linear-gradient(170deg, #24A0B5 0%, #0E464F 0%, transparent 100% )` }}
                 >
                     <div className='max-w-[340px] mx-auto'>
-                        <h1 className='font-[family-name:var(--font-road-rage)] text-6xl text-[#FAFAFA]'>
+                        <h1 className='font-[family-name:var(--font-road-rage)] text-5xl md:text-6xl text-[#FAFAFA]'>
                             Techember Fest ”25
                         </h1>
-                        <p className='font-[family-name:var(--font-roboto)] text-base font-normal leading-relaxed text-[#FAFAFA]'>
+                        <p className='font-[family-name:var(--font-roboto)] text-sm md:text-base font-normal leading-relaxed text-[#FAFAFA]'>
                             Join us for an unforgettable experience at [Event Name]! Secure your spot now
                         </p>
                         <p className='font-[family-name:var(--font-roboto)] mt-2 text-base font-normal leading-relaxed text-[#FAFAFA]'>
