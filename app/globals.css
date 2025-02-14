@@ -28,3 +28,129 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif, 'Jeju Myeongjo';
 }
+
+.ticket {
+  display: flex;
+  position: relative;
+  width: 300px;
+  flex-direction: column;
+}
+
+.ticket--start {
+  position: relative;
+  /* border-bottom: 2px dashed #24A0B5; */
+}
+
+.ticket--start:before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: -16px;
+  top: -0px;
+  margin-top: -16px;
+  border-radius: 50%;
+}
+
+.ticket--start:after {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  transform: rotate(-225deg);
+  right: -16px;
+  top: -0px;
+  margin-top: -16px;
+  border-radius: 50%;
+}
+
+
+.ticket--center:before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  transform: rotate(-135deg);
+  left: -16px;
+  top: -0px;
+  margin-top: -16px;
+  border-radius: 50%;
+}
+
+.ticket--center:after {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  transform: rotate(-135deg);
+  right: -16px;
+  top: -0px;
+  margin-top: -16px;
+  border-radius: 50%;
+}
+
+.ticket--center {
+  padding: 5px;
+  position: relative;
+}
+
+.ticket--end {
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ticket--end:before {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  transform: rotate(-225deg);
+  left: -16px;
+  top: 100%;
+  margin-top: -16px;
+  border-radius: 50%;
+}
+
+.ticket--end:after {
+  content: '';
+  width: 32px;
+  height: 32px;
+  background-color: #041E23;
+  border: 1px solid #24A0B5;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  transform: rotate(-45deg);
+  right: -16px;
+  top: 100%;
+  margin-top: -16px;
+  border-radius: 50%;
+}
