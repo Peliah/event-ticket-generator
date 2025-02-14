@@ -32,13 +32,12 @@ body {
 .ticket {
   display: flex;
   position: relative;
-  width: 300px;
+  width: 350px;
   flex-direction: column;
 }
 
 .ticket--start {
   position: relative;
-  /* border-bottom: 2px dashed #24A0B5; */
 }
 
 .ticket--start:before {
@@ -114,7 +113,7 @@ body {
 }
 
 .ticket--end {
-  padding: 24px;
+  padding: 18px 34px 18px 34px;
 
   display: flex;
   flex-direction: column;
