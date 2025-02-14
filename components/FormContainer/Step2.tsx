@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { StepProps } from '@/utils/types';
 import { BiCloudDownload, BiEnvelope } from 'react-icons/bi';
@@ -11,20 +11,20 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
     const [isHovered, setIsHovered] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    useEffect(() => {
+        setImage(formData.avatar);
+    }, [formData.avatar]);
+
+    const handleDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         setDragActive(true);
-    };
+    }, []);
 
-    const handleDragLeave = () => {
+    const handleDragLeave = useCallback(() => {
         setDragActive(false);
-    };
+    }, []);
 
-    useEffect(() => {
-        setImage(formData.avatar)
-    }, [formData.avatar])
-
-    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         setDragActive(false);
 
@@ -38,9 +38,9 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
             };
             reader.readAsDataURL(file);
         }
-    };
+    }, [formData, setFormData]);
 
-    const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileSelect = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file && file.type.startsWith("image/")) {
             const reader = new FileReader();
@@ -48,17 +48,15 @@ const Step2: React.FC<StepProps> = ({ nextStep, prevStep, formData, setFormData,
                 const imageUrl = e.target?.result as string;
                 setImage(imageUrl);
                 setFormData({ ...formData, avatar: imageUrl });
-                console.log(imageUrl);
-
             };
             reader.readAsDataURL(file);
         }
-    };
+    }, [formData, setFormData]);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-    };
+    }, [formData, setFormData]);
 
     return (
         <div className='p-6 rounded-3xl border border-[#0E464F] bg-[#08252B]'>
