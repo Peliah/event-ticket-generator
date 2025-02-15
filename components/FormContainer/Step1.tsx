@@ -19,7 +19,7 @@ const Step1: React.FC<StepProps> = ({ nextStep, formData, setFormData, errors, c
     return (
         <div className='p-5 md:p-6 rounded-3xl border border-[#0E464F] bg-[#08252B]'>
             <div className='flex flex-col gap-6'>
-                <div className='text-center border-x border-b border-[#0E464F] rounded-3xl h-[200px] bg-transparent flex items-center'
+                <div className='text-center border-x border-b border-[#0E464F] rounded-3xl px-6 py-4 md:p-6 bg-transparent flex items-center'
                     style={{ backgroundImage: `linear-gradient(170deg, #24A0B5 0%, #0E464F 0%, transparent 100% )` }}
                 >
                     <div className='max-w-[340px] mx-auto'>
