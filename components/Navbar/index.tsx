@@ -47,7 +47,7 @@ const Navbar = () => {
                     <div>
                         <Link
                             className="bg-white hover:bg-[#24A0B5] flex items-center py-4 md:py-3 px-3 md:px-6 rounded-xl gap-3 border border-[rgba(213, 234, 0, 0.1)] hover:text-[#D9D9D9] hover:border-[#D9D9D9] text-[#05252C]"
-                            href="/my-tickets"
+                            href="/tickets"
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                         >
